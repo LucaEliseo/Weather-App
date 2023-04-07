@@ -1,10 +1,14 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+
+import {
+
+  MDBBtn
+} from 'mdb-react-ui-kit';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 
-const Main = () => {
+const Header = () => {
   const dispatch = useDispatch();
   const place = useSelector((state) => state.place);
   const meteoData = useSelector((state) => state.meteoData);
@@ -55,14 +59,27 @@ const Main = () => {
   return (
     <>
       {meteoData && (
-        <Card className="text-center p-2">
-          <Card.Body>
-            <Card.Title>{place}</Card.Title>
-          </Card.Body>
-        </Card>
+        <header>
+        <div
+        className='p-5 text-center bg-image'
+        style={{ backgroundImage: "url('https://mdbootstrap.com/img/new/slides/041.webp')", height: '400px' }}
+      >
+        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className='d-flex justify-content-center align-items-center h-100'>
+            <div className='text-white'>
+              <h1 className='mb-3'>WeatherLine</h1>
+              <h4 className='mb-3'>Weather forecasts, nowcasts and history in a fast and elegant way</h4>
+              <MDBBtn tag="a" outline size="lg text-light">
+               {place}
+              </MDBBtn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
       )}
     </>
   );
 };
 
-export default Main;
+export default Header;
